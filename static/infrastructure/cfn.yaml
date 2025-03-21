@@ -1,0 +1,110 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Create IAM User with Access Key stored in Secrets Manager and Bedrock permissions'
+
+Resources:
+  MyIAMUser:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: Databricks_User
+      ManagedPolicyArns:
+        - !Ref BedrockUserPolicy
+
+  BedrockUserPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: BedrockUserPolicy
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action:
+              - bedrock:InvokeModel
+              - bedrock:ListFoundationModels
+              - bedrock:GetFoundationModel
+              - bedrock:ListCustomModels
+              - bedrock:GetCustomModel
+              - bedrock:ListModelInvocationLoggingConfigurations
+              - bedrock:ListPromptsForCustomModel
+              - bedrock:ListPromptTemplates
+              - bedrock:GetPromptTemplate
+            Resource: '*'
+          - Effect: Allow
+            Action:
+              - iam:PassRole
+            Resource: '*'
+            Condition:
+              StringEquals:
+                iam:PassedToService: bedrock.amazonaws.com
+
+  MyIAMUserAccessKey:
+    Type: AWS::IAM::AccessKey
+    Properties:
+      UserName: !Ref MyIAMUser
+
+  MySecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: MyUserAccessKey
+      Description: 'Access key for Databricks_User'
+
+  StoreSecretFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      Runtime: python3.8
+      Handler: index.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Code:
+        ZipFile: |
+          import boto3
+          import cfnresponse
+          def handler(event, context):
+            try:
+              if event['RequestType'] == 'Create':
+                secret_name = event['ResourceProperties']['SecretName']
+                access_key_id = event['ResourceProperties']['AccessKeyId']
+                secret_access_key = event['ResourceProperties']['SecretAccessKey']
+                
+                secrets_manager = boto3.client('secretsmanager')
+                secrets_manager.put_secret_value(
+                  SecretId=secret_name,
+                  SecretString='{"AccessKeyId":"' + access_key_id + '","SecretAccessKey":"' + secret_access_key + '"}'
+                )
+              cfnresponse.send(event, context, cfnresponse.SUCCESS, {})
+            except Exception as e:
+              print(e)
+              cfnresponse.send(event, context, cfnresponse.FAILED, {})
+
+  StoreSecretCustomResource:
+    Type: Custom::StoreSecret
+    Properties:
+      ServiceToken: !GetAtt StoreSecretFunction.Arn
+      SecretName: !Ref MySecret
+      AccessKeyId: !Ref MyIAMUserAccessKey
+      SecretAccessKey: !GetAtt MyIAMUserAccessKey.SecretAccessKey
+
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      Policies:
+        - PolicyName: SecretsManagerAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - secretsmanager:PutSecretValue
+                Resource: !Ref MySecret
+
+Outputs:
+  SecretsManagerLink:
+    Description: "Link to the Credentials in AWS Secrets Manager"
+    Value: !Sub "https://${AWS::Region}.console.aws.amazon.com/secretsmanager/home?region=${AWS::Region}#!/secret?name=${MySecret}"
