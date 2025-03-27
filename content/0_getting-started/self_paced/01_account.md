@@ -14,14 +14,14 @@ Your account must have the ability to create new IAM Users and scope other IAM p
 
 1. Navigate to [Cloudformation](https://console.aws.amazon.com/cloudformation/) and click on Create Stack -> With new resources standard.
 
-![Create Stack](/static/images/create-stack.png)
+![Create Stack](/images/create-stack.png)
 
 
 2. Select "Build from Infrastructure Composer":
-![Build from Infrastructure Composer](/static/images/infrastructure-composer.png)
+![Build from Infrastructure Composer](/images/infrastructure-composer.png)
 
 3. Click Template:
-![Click Template](/static/images/click-template.png)
+![Click Template](/images/click-template.png)
 
 4. Copy/Paste the Cloudformation template below into the blank field:
 
@@ -140,34 +140,34 @@ Outputs:
 
 5. Click create template:
 
-![Create Template](/static/images/create-template.png)
+![Create Template](/images/create-template.png)
 
 6. Click confirm template:
 
-![Confirm Template](/static/images/confirm-template.png)
+![Confirm Template](/images/confirm-template.png)
 
 7. Click Next:
 
-![Next](/static/images/next.png)
+![Next](/images/next.png)
 
 8. Specify the stack name and click next:
 
-![Login URL](/static/images/stack-name.png)
+![Login URL](/images/stack-name.png)
 
 9. Scroll down the page and click the checkbox and click next:
 
-![Login URL](/static/images/checkbox.png)
+![Login URL](/images/checkbox.png)
 
 10. Scroll down and click Submit:
 
-![Login URL](/static/images/submit.png)
+![Login URL](/images/submit.png)
 
 11. Navigate to Outputs and click on the SecretsManagerLink which will direct you to the IAM access-key and Secret:
 
-![Login URL](/static/images/outputs.png)
+![Login URL](/images/outputs.png)
 
 12. Click on retrieve secret value and copy the secret access id and secret access key to a notepad:
 
-![Login URL](/static/images/secret.png)
+![Login URL](/images/secret.png)
 
 Success! Now you can wait for the instructions provided by the instructor to continue the workshop!
