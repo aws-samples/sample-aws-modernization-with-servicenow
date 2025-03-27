@@ -1,7 +1,7 @@
 ---
 title: "Prerequisites"
 chapter: true
-weight: 10
+weight: 5
 ---
 
 # Getting Started

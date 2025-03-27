@@ -114,7 +114,7 @@ Workshop materials should be self-contained wherever practical.
 |
  | **Yes/No/Comments** |
 | --- | --- |
-| Are images and other single files (CloudFormation templates, individual code files, etc) contained within the workshop structure, either within the specific chapter or under the /static folder. For example, an image should use a format like ![](../static/image.png) and not ![]([https://googleimagesearch.com/?term=penguin](https://googleimagesearch.com/?term=penguin)) |
+| Are images and other single files (CloudFormation templates, individual code files, etc) contained within the workshop structure, either within the specific chapter or under the  folder. For example, an image should use a format like ![](../image.png) and not ![]([https://googleimagesearch.com/?term=penguin](https://googleimagesearch.com/?term=penguin)) |
  |
 | Do all images used in this workshop have a [CC0 license](https://creativecommons.org/share-your-work/public-domain/cc0/)? |
  |

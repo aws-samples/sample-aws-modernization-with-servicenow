@@ -1,7 +1,7 @@
 #Workshop developer self-review
 
 > AWS Marketplace specific requirements
-1. /_index.md - Change the href url to **Available in MP Link** and the png image to **Seller badge (image)**. Be sure to put the png file you receive into the folder /static/
+1. /_index.md - Change the href url to **Available in MP Link** and the png image to **Seller badge (image)**. Be sure to put the png file you receive into the folder /
 2. /030_self_guided_setup/request_credit.md - Change ```https://pages.awscloud.com/awsmp-wsm-dev-workshop-series-credit-request.html?trk=lab_{partnerName}``` to the provided **Credit request link**. On the same page change ```https://aws.amazon.com/marketplace/pp/B07PZY3369?&trk=el_a134p000003yrYeAAI&trkCampaign=AWSMP_pdp_dev_x_dg&sc_channel=el&sc_campaign=el_awsmp_mult&sc_outcome=Marketplace``` to the Available in MP link.
 3. /099_survey/_index.md - Change ```https://pages.awscloud.com/awsmp-wsm-dev-workshop-series-csat-lab-completion.html``` to the ***CSAT form URL**.
 4. ALL workshops part of AWS Marketplace DevOps series need to use your company's free trial Marketplace offer, as part of the workshop. [Free Trial Example](https://aws.amazon.com/marketplace/seller-profile?id=56345c10-b815-46b5-acd2-d0e0d2626670). DO NOT use your company's free trial sign-up page.
@@ -44,7 +44,7 @@ If the workshop runs only in specific regions, are these clearly listed?
 8. Does the workshop reference/link to the clean-up steps in the introduction or setup chapters? If someone cannot complete the workshop, they should still know about the existence of clean-up steps. They should not need to complete the workshop before being told of clean-up steps.
 
 > External Links and Privacy
-1. Are images and other single files (CloudFormation templates, individual code files, etc) contained within the workshop structure, either within the specific chapter or under the /static folder. For example, an image should use a format like ![](../static/image.png) and not ![](https://googleimagesearch.com/?term=penguin)
+1. Are images and other single files (CloudFormation templates, individual code files, etc) contained within the workshop structure, either within the specific chapter or under the  folder. For example, an image should use a format like ![](../image.png) and not ![](https://googleimagesearch.com/?term=penguin)
 2. Do links to any Youtube videos use the Hugo “Youtube” shortcode? (This allows us to enforce privacy-enhanced mode when linking to the content)
 3. Is the workshop self-contained? (Will the workshop function/can it be delivered if your personal accounts are lost)
 

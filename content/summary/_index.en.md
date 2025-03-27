@@ -18,7 +18,7 @@ If you have completed this workshop under your own account, you can follow these
 
 ```bash
 # Delete CloudFormation Stacks
-aws cloudformation delete-stack --stack-name databricks 
+aws cloudformation delete-stack --stack-name servicenow 
 ```
 
-Note: you can also head to [Cloudformation](https://console.aws.amazon.com/cloudformation/) and select the stack `databricks` and click delete stack.
+Note: you can also head to [Cloudformation](https://console.aws.amazon.com/cloudformation/) and select the stack `servicenow` and click delete stack.

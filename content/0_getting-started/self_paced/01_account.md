@@ -33,7 +33,7 @@ Resources:
   MyIAMUser:
     Type: AWS::IAM::User
     Properties:
-      UserName: Databricks_User
+      UserName: ServiceNow_User
       ManagedPolicyArns:
         - !Ref BedrockUserPolicy
 
@@ -73,7 +73,7 @@ Resources:
     Type: AWS::SecretsManager::Secret
     Properties:
       Name: MyUserAccessKey
-      Description: 'Access key for Databricks_User'
+      Description: 'Access key for ServiceNow_User'
 
   StoreSecretFunction:
     Type: AWS::Lambda::Function

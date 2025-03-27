@@ -80,7 +80,7 @@ Inside the zip archive downloaded from highlight.js extract the file named `high
 static/js/highlight.pack.js
 ```
 
-**Do not** replace the existing file at `themes/hugo-theme-learn/static/js/highlight.pack.js`.
+**Do not** replace the existing file at `themes/hugo-theme-learn/js/highlight.pack.js`.
 
 Including the file in the correct path will override the theme default highlight.pack.js and prevent issues caused in the future if the theme default file is updated.
 
