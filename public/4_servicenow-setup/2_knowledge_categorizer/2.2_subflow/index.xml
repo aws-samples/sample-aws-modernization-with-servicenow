@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Build Subflow for knowledge categories on English</title>
+    <link>//localhost:1313/4_servicenow-setup/2_knowledge_categorizer/2.2_subflow.html</link>
+    <description>Recent content in Build Subflow for knowledge categories on English</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="//localhost:1313/4_servicenow-setup/2_knowledge_categorizer/2.2_subflow/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

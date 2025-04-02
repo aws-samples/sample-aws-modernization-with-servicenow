@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Custom Skills using NASK on English</title>
+    <link>//localhost:1313/4_servicenow-setup/2_knowledge_categorizer/2.3_custom_skills.html</link>
+    <description>Recent content in Custom Skills using NASK on English</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <atom:link href="//localhost:1313/4_servicenow-setup/2_knowledge_categorizer/2.3_custom_skills/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

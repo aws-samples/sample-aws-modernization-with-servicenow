@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.145.0">
+    <meta name="description" content="AWS Modernization Workshop">
+<meta name="author" content="Patrick Vassell">
+
+    <link rel="icon" href="https://awsmedia.s3.amazonaws.com/favicon.ico" type="image/x-icon" />
+
+    <title>Create an AWS IAM User with Cloudformation :: English</title>
+
+    
+    <link href="/css/nucleus.css?1743545693" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1743545693" rel="stylesheet">
+    <link href="/css/hybrid.css?1743545693" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1743545693" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1743545693" rel="stylesheet">
+    <link href="/css/auto-complete.css?1743545693" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1743545693" rel="stylesheet">
+    <link href="/css/theme.css?1743545693" rel="stylesheet">
+    <link href="/css/tabs.css?1743545693" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1743545693" rel="stylesheet">
+    
+    <link href="/css/theme-mine.css?1743545693" rel="stylesheet">
+    
+    
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/4_servicenow-setup/0_self_paced/01_account.html">
+    <nav id="sidebar" class="showVisitedLinks">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a href="/" title="Go home"><svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 30" width="50%" style="padding:20px 0px;"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#f90;fill-rule:evenodd;}</style></defs><title>AWS-Logo_White-Color</title><path class="cls-1" d="M14.09,10.85a4.7,4.7,0,0,0,.19,1.48,7.73,7.73,0,0,0,.54,1.19.77.77,0,0,1,.12.38.64.64,0,0,1-.32.49l-1,.7a.83.83,0,0,1-.44.15.69.69,0,0,1-.49-.23,3.8,3.8,0,0,1-.6-.77q-.25-.42-.51-1a6.14,6.14,0,0,1-4.89,2.3,4.54,4.54,0,0,1-3.32-1.19,4.27,4.27,0,0,1-1.22-3.2A4.28,4.28,0,0,1,3.61,7.75,6.06,6.06,0,0,1,7.69,6.46a12.47,12.47,0,0,1,1.76.13q.92.13,1.91.36V5.73a3.65,3.65,0,0,0-.79-2.66A3.81,3.81,0,0,0,7.86,2.3a7.71,7.71,0,0,0-1.79.22,12.78,12.78,0,0,0-1.79.57,4.55,4.55,0,0,1-.58.22l-.26,0q-.35,0-.35-.52V2a1.09,1.09,0,0,1,.12-.58,1.2,1.2,0,0,1,.47-.35A10.88,10.88,0,0,1,5.77.32,10.19,10.19,0,0,1,8.36,0a6,6,0,0,1,4.35,1.35,5.49,5.49,0,0,1,1.38,4.09ZM7.34,13.38a5.36,5.36,0,0,0,1.72-.31A3.63,3.63,0,0,0,10.63,12,2.62,2.62,0,0,0,11.19,11a5.63,5.63,0,0,0,.16-1.44v-.7a14.35,14.35,0,0,0-1.53-.28,12.37,12.37,0,0,0-1.56-.1,3.84,3.84,0,0,0-2.47.67A2.34,2.34,0,0,0,5,11a2.35,2.35,0,0,0,.61,1.76A2.4,2.4,0,0,0,7.34,13.38Zm13.35,1.8a1,1,0,0,1-.64-.16,1.3,1.3,0,0,1-.35-.65L15.81,1.51a3,3,0,0,1-.15-.67.36.36,0,0,1,.41-.41H17.7a1,1,0,0,1,.65.16,1.4,1.4,0,0,1,.33.65l2.79,11,2.59-11A1.17,1.17,0,0,1,24.39.6a1.1,1.1,0,0,1,.67-.16H26.4a1.1,1.1,0,0,1,.67.16,1.17,1.17,0,0,1,.32.65L30,12.39,32.88,1.25A1.39,1.39,0,0,1,33.22.6a1,1,0,0,1,.65-.16h1.54a.36.36,0,0,1,.41.41,1.36,1.36,0,0,1,0,.26,3.64,3.64,0,0,1-.12.41l-4,12.86a1.3,1.3,0,0,1-.35.65,1,1,0,0,1-.64.16H29.25a1,1,0,0,1-.67-.17,1.26,1.26,0,0,1-.32-.67L25.67,3.64,23.11,14.34a1.26,1.26,0,0,1-.32.67,1,1,0,0,1-.67.17Zm21.36.44a11.28,11.28,0,0,1-2.56-.29,7.44,7.44,0,0,1-1.92-.67,1,1,0,0,1-.61-.93v-.84q0-.52.38-.52a.9.9,0,0,1,.31.06l.42.17a8.77,8.77,0,0,0,1.83.58,9.78,9.78,0,0,0,2,.2,4.48,4.48,0,0,0,2.43-.55,1.76,1.76,0,0,0,.86-1.57,1.61,1.61,0,0,0-.45-1.16A4.29,4.29,0,0,0,43,9.22l-2.41-.76A5.15,5.15,0,0,1,38,6.78a3.94,3.94,0,0,1-.83-2.41,3.7,3.7,0,0,1,.45-1.85,4.47,4.47,0,0,1,1.19-1.37A5.27,5.27,0,0,1,40.51.29,7.4,7.4,0,0,1,42.6,0a8.87,8.87,0,0,1,1.12.07q.57.07,1.08.19t.95.26a4.27,4.27,0,0,1,.7.29,1.59,1.59,0,0,1,.49.41.94.94,0,0,1,.15.55v.79q0,.52-.38.52a1.76,1.76,0,0,1-.64-.2,7.74,7.74,0,0,0-3.2-.64,4.37,4.37,0,0,0-2.21.47,1.6,1.6,0,0,0-.79,1.48,1.58,1.58,0,0,0,.49,1.18,4.94,4.94,0,0,0,1.83.92L44.55,7a5.08,5.08,0,0,1,2.57,1.6A3.76,3.76,0,0,1,47.9,11a4.21,4.21,0,0,1-.44,1.93,4.4,4.4,0,0,1-1.21,1.47,5.43,5.43,0,0,1-1.85.93A8.25,8.25,0,0,1,42.05,15.62Z"></path><path class="cls-2" d="M45.19,23.81C39.72,27.85,31.78,30,25,30A36.64,36.64,0,0,1,.22,20.57c-.51-.46-.06-1.09.56-.74A49.78,49.78,0,0,0,25.53,26.4,49.23,49.23,0,0,0,44.4,22.53C45.32,22.14,46.1,23.14,45.19,23.81Z"></path><path class="cls-2" d="M47.47,21.21c-.7-.9-4.63-.42-6.39-.21-.53.06-.62-.4-.14-.74,3.13-2.2,8.27-1.57,8.86-.83s-.16,5.89-3.09,8.35c-.45.38-.88.18-.68-.32C46.69,25.8,48.17,22.11,47.47,21.21Z"></path></svg></a>
+  
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1743545693"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1743545693"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/\/localhost:1313\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1743545693"></script>
+
+    
+  </div>
+  
+    <section id="homelinks">
+      <ul>
+        <li>
+            <a class="padding" href='/'><i class='fas fa-home'></i> Home</a>
+        </li>
+      </ul>
+    </section>
+  
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1_introduction.html" title="Introduction" class="dd-item
+        
+        
+        
+        ">
+      <a href="/1_introduction.html">
+          Introduction
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/1_introduction/11_foreword.html" title="Foreword" class="dd-item ">
+        <a href="/1_introduction/11_foreword.html">
+        Foreword
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/1_introduction/12_technicalissue_problem.html" title="Technical Issue / Problem" class="dd-item ">
+        <a href="/1_introduction/12_technicalissue_problem.html">
+        Technical Issue / Problem
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/1_introduction/13_whoweare.html" title="Who We Are" class="dd-item ">
+        <a href="/1_introduction/13_whoweare.html">
+        Who We Are
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/1_introduction/14_workshopprerequisites.html" title="Workshop Prerequisites" class="dd-item ">
+        <a href="/1_introduction/14_workshopprerequisites.html">
+        Workshop Prerequisites
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/1_introduction/15_nextsteps.html" title="Workshop Next Steps" class="dd-item ">
+        <a href="/1_introduction/15_nextsteps.html">
+        Workshop Next Steps
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2_getting-started.html" title="Prerequisites" class="dd-item
+        
+        
+        
+        ">
+      <a href="/2_getting-started.html">
+          Prerequisites
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2_getting-started/0_self_paced.html" title="...on your own" class="dd-item
+        
+        
+        
+        ">
+      <a href="/2_getting-started/0_self_paced.html">
+          ...on your own
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/2_getting-started/0_self_paced/01_account.html" title="Create an AWS IAM User with Cloudformation" class="dd-item ">
+        <a href="/2_getting-started/0_self_paced/01_account.html">
+        Create an AWS IAM User with Cloudformation
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2_getting-started/1_aws_event.html" title="...at an AWS event" class="dd-item
+        
+        
+        
+        ">
+      <a href="/2_getting-started/1_aws_event.html">
+          ...at an AWS event
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2_getting-started/2_enable-bedrock-models.html" title="Enable Amazon Bedrock in the Console" class="dd-item
+        
+        
+        
+        ">
+      <a href="/2_getting-started/2_enable-bedrock-models.html">
+          Enable Amazon Bedrock in the Console
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2_getting-started/3_servicenow-enterprise-license.html" title="ServiceNow Enterprise License" class="dd-item
+        
+        
+        
+        ">
+      <a href="/2_getting-started/3_servicenow-enterprise-license.html">
+          ServiceNow Enterprise License
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4_servicenow-setup.html" title="Setting Up the ServiceNow Now Assist Application" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="/4_servicenow-setup.html">
+          Setting Up the ServiceNow Now Assist Application
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4_servicenow-setup/0_self_paced.html" title="...on your own" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="/4_servicenow-setup/0_self_paced.html">
+          ...on your own
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+      <li data-nav-id="/4_servicenow-setup/0_self_paced/01_account.html" title="Create an AWS IAM User with Cloudformation" class="dd-item active">
+        <a href="/4_servicenow-setup/0_self_paced/01_account.html">
+        Create an AWS IAM User with Cloudformation
+        <i class="fas fa-check read-icon"></i>
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6_summary.html" title="Cleanup" class="dd-item
+        
+        
+        
+        ">
+      <a href="/6_summary.html">
+          Cleanup
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3>More</h3>
+        <ul>
+          
+              <li>
+                  <a class="padding" href="https://awsworkshop.io"><i class='fas fa-graduation-cap'></i> Modernization Workshops</a>
+              </li>
+          
+              <li>
+                  <a class="padding" href="https://aws.amazon.com/builders-library/"><i class='fas fa-tools'></i> AWS Builders Library</a>
+              </li>
+          
+              <li>
+                  <a class="padding" href="https://aws.amazon.com/blogs/modernizing-with-aws/"><i class='far fa-lightbulb'></i> Modernization with AWS</a>
+              </li>
+          
+              <li>
+                  <a class="padding" href="https://eksworkshop.com/"><i class='fas fa-chalkboard-teacher'></i> EKS Workshop</a>
+              </li>
+          
+              <li>
+                  <a class="padding" href="https://ecsworkshop.com/"><i class='fas fa-chalkboard-teacher'></i> ECS Workshop</a>
+              </li>
+          
+              <li>
+                  <a class="padding" href="https://www.appmeshworkshop.com/"><i class='fas fa-chalkboard-teacher'></i> App Mesh Workshop</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="prefooter">
+      <hr/>
+      <ul>
+      
+
+      
+        <li><a class="padding" href="#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> Clear History</a></li>
+      
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <left>
+
+    <a href="https://aws.amazon.com/privacy/?nc1=f_pr">Privacy</a> | <a
+        href="https://aws.amazon.com/terms/?nc1=f_pr">Site Terms</a> | <a
+        href="https://modernization-workshop-bucket.s3-us-west-2.amazonaws.com/license/cc-license.html">CC BY-SA 4.0</a>
+
+</left>
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Partner Setup</a> > <a href='/4_servicenow-setup.html'>Setting Up the ServiceNow Now Assist Application</a> > <a href='/4_servicenow-setup/0_self_paced.html'>...on your own</a> > Create an AWS IAM User with Cloudformation
+          
+        
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Create an AWS IAM User with Cloudformation
+            </h1>
+          
+
+        
+
+
+<p>Note:
+Only complete this section if you are running the workshop on your own. If you are at an AWS hosted event (such as re:Invent, Kubecon, Immersion Day, etc), go to <a href="../aws_event/">Start the workshop at an AWS event</a>. Keep in mind, you may incur costs by participating in this workshop. Please navigate to the ../Cleanup</p>
+<p>Your account must have the ability to create new IAM Users and scope other IAM permissions.</p>
+<ol>
+<li>Navigate to <a href="https://console.aws.amazon.com/cloudformation/" target="_blank">Cloudformation</a> and click on Create Stack -&gt; With new resources standard.</li>
+</ol>
+<p><img src="/images/create-stack.png" alt="Create Stack"></p>
+<ol start="2">
+<li>
+<p>Select &ldquo;Build from Infrastructure Composer&rdquo;:
+<img src="/images/infrastructure-composer.png" alt="Build from Infrastructure Composer"></p>
+</li>
+<li>
+<p>Click Template:
+<img src="/images/click-template.png" alt="Click Template"></p>
+</li>
+<li>
+<p>Copy/Paste the Cloudformation template below into the blank field:</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>AWSTemplateFormatVersion: <span style="color:#e6db74">&#39;2010-09-09&#39;</span>
+</span></span><span style="display:flex;"><span>Description: <span style="color:#e6db74">&#39;Create IAM User with Access Key stored in Secrets Manager and Bedrock permissions&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Resources:
+</span></span><span style="display:flex;"><span>  MyIAMUser:
+</span></span><span style="display:flex;"><span>    Type: AWS::IAM::User
+</span></span><span style="display:flex;"><span>    Properties:
+</span></span><span style="display:flex;"><span>      UserName: ServiceNow_User
+</span></span><span style="display:flex;"><span>      ManagedPolicyArns:
+</span></span><span style="display:flex;"><span>        - !Ref BedrockUserPolicy
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  BedrockUserPolicy:
+</span></span><span style="display:flex;"><span>    Type: AWS::IAM::ManagedPolicy
+</span></span><span style="display:flex;"><span>    Properties:
+</span></span><span style="display:flex;"><span>      ManagedPolicyName: BedrockUserPolicy
+</span></span><span style="display:flex;"><span>      PolicyDocument:
+</span></span><span style="display:flex;"><span>        Version: <span style="color:#e6db74">&#39;2012-10-17&#39;</span>
+</span></span><span style="display:flex;"><span>        Statement:
+</span></span><span style="display:flex;"><span>          - Effect: Allow
+</span></span><span style="display:flex;"><span>            Action:
+</span></span><span style="display:flex;"><span>              - bedrock:InvokeModel
+</span></span><span style="display:flex;"><span>              - bedrock:ListFoundationModels
+</span></span><span style="display:flex;"><span>              - bedrock:GetFoundationModel
+</span></span><span style="display:flex;"><span>              - bedrock:ListCustomModels
+</span></span><span style="display:flex;"><span>              - bedrock:GetCustomModel
+</span></span><span style="display:flex;"><span>              - bedrock:ListModelInvocationLoggingConfigurations
+</span></span><span style="display:flex;"><span>              - bedrock:ListPromptsForCustomModel
+</span></span><span style="display:flex;"><span>              - bedrock:ListPromptTemplates
+</span></span><span style="display:flex;"><span>              - bedrock:GetPromptTemplate
+</span></span><span style="display:flex;"><span>            Resource: <span style="color:#e6db74">&#39;*&#39;</span>
+</span></span><span style="display:flex;"><span>          - Effect: Allow
+</span></span><span style="display:flex;"><span>            Action:
+</span></span><span style="display:flex;"><span>              - iam:PassRole
+</span></span><span style="display:flex;"><span>            Resource: <span style="color:#e6db74">&#39;*&#39;</span>
+</span></span><span style="display:flex;"><span>            Condition:
+</span></span><span style="display:flex;"><span>              StringEquals:
+</span></span><span style="display:flex;"><span>                iam:PassedToService: bedrock.amazonaws.com
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  MyIAMUserAccessKey:
+</span></span><span style="display:flex;"><span>    Type: AWS::IAM::AccessKey
+</span></span><span style="display:flex;"><span>    Properties:
+</span></span><span style="display:flex;"><span>      UserName: !Ref MyIAMUser
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  MySecret:
+</span></span><span style="display:flex;"><span>    Type: AWS::SecretsManager::Secret
+</span></span><span style="display:flex;"><span>    Properties:
+</span></span><span style="display:flex;"><span>      Name: MyUserAccessKey
+</span></span><span style="display:flex;"><span>      Description: <span style="color:#e6db74">&#39;Access key for ServiceNow_User&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  StoreSecretFunction:
+</span></span><span style="display:flex;"><span>    Type: AWS::Lambda::Function
+</span></span><span style="display:flex;"><span>    Properties:
+</span></span><span style="display:flex;"><span>      Runtime: python3.8
+</span></span><span style="display:flex;"><span>      Handler: index.handler
+</span></span><span style="display:flex;"><span>      Role: !GetAtt LambdaExecutionRole.Arn
+</span></span><span style="display:flex;"><span>      Code:
+</span></span><span style="display:flex;"><span>        ZipFile: |
+</span></span><span style="display:flex;"><span>          import boto3
+</span></span><span style="display:flex;"><span>          import cfnresponse
+</span></span><span style="display:flex;"><span>          def handler<span style="color:#f92672">(</span>event, context<span style="color:#f92672">)</span>:
+</span></span><span style="display:flex;"><span>            try:
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">if</span> event<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;RequestType&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;Create&#39;</span>:
+</span></span><span style="display:flex;"><span>                secret_name <span style="color:#f92672">=</span> event<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;ResourceProperties&#39;</span><span style="color:#f92672">][</span><span style="color:#e6db74">&#39;SecretName&#39;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>                access_key_id <span style="color:#f92672">=</span> event<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;ResourceProperties&#39;</span><span style="color:#f92672">][</span><span style="color:#e6db74">&#39;AccessKeyId&#39;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>                secret_access_key <span style="color:#f92672">=</span> event<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;ResourceProperties&#39;</span><span style="color:#f92672">][</span><span style="color:#e6db74">&#39;SecretAccessKey&#39;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>                secrets_manager <span style="color:#f92672">=</span> boto3.client<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;secretsmanager&#39;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>                secrets_manager.put_secret_value<span style="color:#f92672">(</span>
+</span></span><span style="display:flex;"><span>                  SecretId<span style="color:#f92672">=</span>secret_name,
+</span></span><span style="display:flex;"><span>                  SecretString<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;{&#34;AccessKeyId&#34;:&#34;&#39;</span> + access_key_id + <span style="color:#e6db74">&#39;&#34;,&#34;SecretAccessKey&#34;:&#34;&#39;</span> + secret_access_key + <span style="color:#e6db74">&#39;&#34;}&#39;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>              cfnresponse.send<span style="color:#f92672">(</span>event, context, cfnresponse.SUCCESS, <span style="color:#f92672">{})</span>
+</span></span><span style="display:flex;"><span>            except Exception as e:
+</span></span><span style="display:flex;"><span>              print<span style="color:#f92672">(</span>e<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>              cfnresponse.send<span style="color:#f92672">(</span>event, context, cfnresponse.FAILED, <span style="color:#f92672">{})</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  StoreSecretCustomResource:
+</span></span><span style="display:flex;"><span>    Type: Custom::StoreSecret
+</span></span><span style="display:flex;"><span>    Properties:
+</span></span><span style="display:flex;"><span>      ServiceToken: !GetAtt StoreSecretFunction.Arn
+</span></span><span style="display:flex;"><span>      SecretName: !Ref MySecret
+</span></span><span style="display:flex;"><span>      AccessKeyId: !Ref MyIAMUserAccessKey
+</span></span><span style="display:flex;"><span>      SecretAccessKey: !GetAtt MyIAMUserAccessKey.SecretAccessKey
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  LambdaExecutionRole:
+</span></span><span style="display:flex;"><span>    Type: AWS::IAM::Role
+</span></span><span style="display:flex;"><span>    Properties:
+</span></span><span style="display:flex;"><span>      AssumeRolePolicyDocument:
+</span></span><span style="display:flex;"><span>        Version: <span style="color:#e6db74">&#39;2012-10-17&#39;</span>
+</span></span><span style="display:flex;"><span>        Statement:
+</span></span><span style="display:flex;"><span>          - Effect: Allow
+</span></span><span style="display:flex;"><span>            Principal:
+</span></span><span style="display:flex;"><span>              Service: lambda.amazonaws.com
+</span></span><span style="display:flex;"><span>            Action: sts:AssumeRole
+</span></span><span style="display:flex;"><span>      ManagedPolicyArns:
+</span></span><span style="display:flex;"><span>        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+</span></span><span style="display:flex;"><span>      Policies:
+</span></span><span style="display:flex;"><span>        - PolicyName: SecretsManagerAccess
+</span></span><span style="display:flex;"><span>          PolicyDocument:
+</span></span><span style="display:flex;"><span>            Version: <span style="color:#e6db74">&#39;2012-10-17&#39;</span>
+</span></span><span style="display:flex;"><span>            Statement:
+</span></span><span style="display:flex;"><span>              - Effect: Allow
+</span></span><span style="display:flex;"><span>                Action:
+</span></span><span style="display:flex;"><span>                  - secretsmanager:PutSecretValue
+</span></span><span style="display:flex;"><span>                Resource: !Ref MySecret
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Outputs:
+</span></span><span style="display:flex;"><span>  SecretsManagerLink:
+</span></span><span style="display:flex;"><span>    Description: <span style="color:#e6db74">&#34;Link to the Credentials in AWS Secrets Manager&#34;</span>
+</span></span><span style="display:flex;"><span>    Value: !Sub <span style="color:#e6db74">&#34;https://</span><span style="color:#e6db74">${</span>AWS::Region<span style="color:#e6db74">}</span><span style="color:#e6db74">.console.aws.amazon.com/secretsmanager/home?region=</span><span style="color:#e6db74">${</span>AWS::Region<span style="color:#e6db74">}</span><span style="color:#e6db74">#!/secret?name=</span><span style="color:#e6db74">${</span>MySecret<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><ol start="5">
+<li>Click create template:</li>
+</ol>
+<p><img src="/images/create-template.png" alt="Create Template"></p>
+<ol start="6">
+<li>Click confirm template:</li>
+</ol>
+<p><img src="/images/confirm-template.png" alt="Confirm Template"></p>
+<ol start="7">
+<li>Click Next:</li>
+</ol>
+<p><img src="/images/next.png" alt="Next"></p>
+<ol start="8">
+<li>Specify the stack name and click next:</li>
+</ol>
+<p><img src="/images/stack-name.png" alt="Login URL"></p>
+<ol start="9">
+<li>Scroll down the page and click the checkbox and click next:</li>
+</ol>
+<p><img src="/images/checkbox.png" alt="Login URL"></p>
+<ol start="10">
+<li>Scroll down and click Submit:</li>
+</ol>
+<p><img src="/images/submit.png" alt="Login URL"></p>
+<ol start="11">
+<li>Navigate to Outputs and click on the SecretsManagerLink which will direct you to the IAM access-key and Secret:</li>
+</ol>
+<p><img src="/images/outputs.png" alt="Login URL"></p>
+<ol start="12">
+<li>Click on retrieve secret value and copy the secret access id and secret access key to a notepad:</li>
+</ol>
+<p><img src="/images/secret.png" alt="Login URL"></p>
+<p>Success! Now you can wait for the instructions provided by the instructor to continue the workshop!</p>
+
+
+<footer class="footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/4_servicenow-setup/0_self_paced.html" title="...on your own"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/6_summary.html" title="Cleanup" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1743545693"></script>
+    <script src="/js/perfect-scrollbar.min.js?1743545693"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1743545693"></script>
+    <script src="/js/jquery.sticky.js?1743545693"></script>
+    <script src="/js/featherlight.min.js?1743545693"></script>
+    <script src="/js/highlight.pack.js?1743545693"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1743545693"></script>
+    <script src="/js/learn.js?1743545693"></script>
+    <script src="/js/hugo-learn.js?1743545693"></script>
+    
+        
+            <script src="/mermaid/mermaid.js?1743545693"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>
+
