@@ -1,5 +1,5 @@
 ---
-title: "Knowledge Article Categorization"
+title: "Module 1 - Knowledge Article Categorization"
 chapter: true
 weight: 20
 ---
