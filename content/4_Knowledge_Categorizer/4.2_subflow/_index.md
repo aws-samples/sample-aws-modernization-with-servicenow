@@ -1,7 +1,7 @@
 ---
 title: "Build Subflow for Knowledge Categories"
 chapter: true
-weight: 32
+weight: 42
 ---
 
 # Module 2.1: Build Subflow to Retrieve Knowledge Categories 🛠️
