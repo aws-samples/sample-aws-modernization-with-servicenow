@@ -40,5 +40,5 @@ First, we need to identify, review, and collect information about 1) the knowled
 
 3. Identify the knowledge article(s) you intend to use as test records for NASK.  The ideal candidate record should have Knowledge base as a required field. Additionally, Category should be (empty) or incorrect, and detailed text description in the field <b>Article body</b>:
 
-4. Note down the number of the knowledge article you are using. For this demonstration, we are using KB0050013. Store this number for use later. 
+4. Note down the number of the knowledge article you are using. For this demonstration, we are using KB0010005. Store this number for use later. 
 ![KB List](/images/servicenow/knowledge_article/kb_article_for_testing.png)
