@@ -4,73 +4,112 @@ chapter: true
 weight: 43
 ---
 
-# Module 2.3: Custom Skills using NASK 🧩
+# 🧩 Custom Skills using NASK 
+
+## Build the custom skill using NOW Assist Skill Kit
 
 In this section, you'll create **custom skills** using the **NOW Assist Skill Kit (NASK)** that connect to **Amazon Bedrock**, enabling your workflows and Virtual Agent Designer topics to generate intelligent responses using LLMs.
 
-To proceed, ensure your API credentials have been configured in the earlier **Getting Started** module.
-
 ---
+1. Navigate to All > Now Assist Skill Kit > Home from the filter navigator. 
+![KB Subflow](/images/servicenow/custom_skill/kb_nav_nask_home.png)
 
-## 🔐 Configure Amazon Bedrock Connection
+2. Click Create new skill. 
+![KB Subflow](/images/servicenow/custom_skill/kb_nask_home.png)
 
-Before building custom skills, you must have an **active connection** to Amazon Bedrock.
+3. Name the skill IT Knowledge Categorizer. In this lab, we will be using the Amazon Bedrock service using Anthropic Claude LLM to complete our task, so ensure the Default provider and Provider API values are both set to Amazon Bedrock. Click **Create skill and go to prompt editor**. This will create the skill.
 
-### Step 1: Open the Connections & Credential Aliases Page
+![KB Subflow](/images/servicenow/custom_skill/kb_create_skill.png)
 
-#### Navigate to:
+4. Click on **Skill inputs** tab and add a new skill input by clicking the **plus icon** next to it. This is where we add the reference to a knowledge article to use within the prompt.  
+![KB Subflow](/images/servicenow/custom_skill/kb_skill_input.png)
 
-`All > Connections & Credentials > Connections & Credential Aliases`
+5. Populate the skill input form with (screenshot below): 
+<ul>
+    <li>Datatype: Record</li>  
+    <li>Table name: kb_knowledge</li>
+    <li>Name: Knowledge</li>
+    <li>Choose test record: KB0010005 (the number of the knowledge article we took note of in phase 2).</li>
+</ul>
+Once complete, click Add skill input.
 
+![KB Subflow](/images/servicenow/custom_skill/kb_fill_skill_input.png)
 
-![Connection & Credential Aliases](/images/servicenow/now-connection-credentials.png)
+6. Click on **Tool editor** tab and click the plus icon to add the tool node.
+![KB Subflow](/images/servicenow/custom_skill/kb_nav_tool_editor.png)
 
----
+7. Select the **Tool node** and click the **Add** button
+![KB Subflow](/images/servicenow/custom_skill/kb_tool_editor_add_node.png)
 
-### Step 2: Open the Amazon Bedrock Record
+8. Populate the form as seen below. Note the lack of spaces in the Name, and the resource is the name of our published Subflow, i.e., Retrieve Knowledge Base Categories. Scroll down and click the **Add** button
+![KB Subflow](/images/servicenow/custom_skill/kb_tool_editor_fill_subflow.png)
+![KB Subflow](/images/servicenow/custom_skill/kb_tool_editor_add_subflow.png)
 
-Select the record for **Amazon Bedrock**.
+9. Click on **Prompt editor** tab and optionally click the Pencil Icon next to the prompt name to rename the prompt. 
+In the prompt field, copy and paste the text below: 
 
-![Select Bedrock Record](/images/servicenow/now-select-bedrock-connection.png)
+        You are tasked with classifying input text into one of the following categories:  
 
----
+        Each category represents a distinct type of content. Based on the content of the input text, 
+        identify which category best describes it. Ensure that the categorization is based on clear 
+        patterns or keywords in the text that match the defining characteristics of each category. 
 
-### Step 3: Create a New Connection & Credential
+        Instructions:
+        Review the input text. Choose the category that best matches the content. If the input text 
+        could fit into more than one category, choose the most appropriate one based on the primary 
+        theme. 
 
-Click the **Create New Connection & Credential** related link.
+        Example Inputs:
+        Input: "Title: Can't login to my windows laptop." 
+        Category: Windows
 
-![Create New Connection](/images/servicenow/now-create-connection-credential.png)
+        Input: "Issue: Zoom keeps crashing when I start a meeting"
+        Category: Zoom 
 
----
+        Now, classify the following Knowledge Base Article:
 
-### Step 4: Enter Your AWS Credentials
+        Title: 
+        Short Description:
+        Article Body:
 
-Fill in the required fields:
+        Return only the category. No other text. 
+        
+10. Click in the prompt field after the string “...one of the following categories:”. Click on Insert inputs, RetrieveKnowledgeBaseCategories > Compiled IT KB Categories. 
+![KB Subflow](/images/servicenow/custom_skill/kb_prompt_editor_fill_kbcategories.png)
 
-- **Region**: e.g., `us-east-1`
-- **Access Key ID**
-- **Secret Access Key**
+11. Repeat the above insert inputs process to add corresponding text fields to the following fields defined in the prompt:
+- Short Description:
+- Article Body:
 
-Click **Create** to finalize the connection.
+Note: because we are using Knowledge Articles, when inserting inputs, ensure you select Kknowledge > short description and so on. 
 
-![Enter Credentials](/images/servicenow/now-enter-credentials.png)
+12. The completed process prompt should look like the screenshot below. Notice that the Knowledge Base article Short Description field is inserted into the Title section: 
 
----
+        You are tasked with classifying input text into one of the following categories:  {{RetrieveKnowledgeBaseCategories.compiled_it_kb_categories}} 
 
-### Step 5: Confirm Successful Configuration
+        Each category represents a distinct type of content. Based on the content of the input text, 
+        identify which category best describes it. Ensure that the categorization is based on clear 
+        patterns or keywords in the text that match the defining characteristics of each category. 
 
-Once completed, you’ll see a success screen like the one below:
+        Instructions:
+        Review the input text. Choose the category that best matches the content. If the input text 
+        could fit into more than one category, choose the most appropriate one based on the primary 
+        theme. 
 
-![Completed Connection](/images/servicenow/now-completed-connection-credentials.png)
+        Example Inputs:
+        Input: "Title: Can't login to my windows laptop." 
+        Category: Windows
 
----
+        Input: "Issue: Zoom keeps crashing when I start a meeting"
+        Category: Zoom 
 
-## ✅ What’s Next?
+        Now, classify the following Knowledge Base Article:
 
-You’re now ready to build **custom skills** using NASK that call Amazon Bedrock models. These skills can be used in:
+        Title:  {{knowledge.short_description}} 
+        Short Description: {{knowledge.short_description}} 
+        Article Body: {{knowledge.text}} 
 
-- 🤖 **Virtual Agent Designer** – to power dynamic conversations
-- 🧩 **Flow Designer** – for decision trees and business logic
-- ✍️ **Custom scripts** – to extend behavior using JavaScript logic
+        Return only the category. No other text. 
 
-This sets the foundation for a smart, generative AI–driven ServiceNow experience!
+13. Click save.
+
