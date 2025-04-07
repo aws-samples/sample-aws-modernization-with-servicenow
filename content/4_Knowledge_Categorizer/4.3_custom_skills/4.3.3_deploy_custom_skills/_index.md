@@ -33,7 +33,7 @@ In this section, you'll deploy the **custom skill** within the **NOW Assist Skil
         try { 
 
             // Capture the original category 
-
+            
             var originalCategoryGR = new GlideRecord('kb_category'); 
 
             originalCategoryGR.get(current.kb_category);  // Fetch the current category record 
@@ -44,41 +44,38 @@ In this section, you'll deploy the **custom skill** within the **NOW Assist Skil
 
             var output = sn_one_extend.OneExtendUtil.execute(request)['capabilities'][request.executionRequests[0].capabilityId]['response']; 
 
-            // Parse the model output to extract category-related information 
-
-            var modelOutput = JSON.parse(output).model_output; 
-
-            // Populate the category field using the output of the model 
-
-            var categorySysId = getCategorySysIdFromModelOutput(modelOutput); // custom function to resolve category from output 
+            var categorySysId = getCategorySysIdFromModelOutput(output); // custom function to resolve category from output 
 
             if (categorySysId) { 
+
                 current.kb_category = categorySysId;  // Set the category to the resolved sys_id 
 
                 current.update();  // Save the changes to the KB article 
+
                 // Inform the user of the original category and the updated category with the record number 
 
-                gs.addInfoMessage("The category of record " + current.getValue('number') + " has been updated from '" + originalCategory + "' to '" + modelOutput + "'. Please review the update for accuracy."); 
-            } else { 
+                gs.addInfoMessage("The category of record " + current.getValue('number') + " has been updated from '" + originalCategory + "' to '" + output + "'. Please review the update for accuracy."); 
 
+            } else { 
                 gs.addErrorMessage('No matching category found for the model output for record ' + current.getValue('number') + '. Please review the output or adjust manually.'); 
-            } 
+            }  
 
         } catch(e) { 
-
             gs.error(e); 
-
-            gs.addErrorMessage('Something went wrong while executing the skill for record ' + current.getValue('number') + '. Please try again.'); 
+            
+            gs.addErrorMessage('Something went wrong while executing the skill for record ' + current.getValue('number') + '. Please try again.' + e); 
         } 
 
         // Custom function to get the sys_id of the category from the model output 
 
         function getCategorySysIdFromModelOutput(modelOutput) { 
+
             // Assuming the model output contains the name or label of the category 
 
-            var categoryName = modelOutput.trim();  // Adjust based on actual model output structure, trim to remove extra spaces 
+            var categoryName = modelOutput.trim();  // Adjust based on actual model output structure, trim to remove extra spaces  
 
             // Query the KB Category table (kb_category) to get the sys_id of the matching category 
+
             var kbCategoryGR = new GlideRecord('kb_category'); 
 
             kbCategoryGR.addQuery('label', categoryName); 
@@ -86,9 +83,13 @@ In this section, you'll deploy the **custom skill** within the **NOW Assist Skil
             kbCategoryGR.query(); 
 
             if (kbCategoryGR.next()) { 
+
                 return kbCategoryGR.getValue('sys_id'); 
+
             } else { 
+
                 return null; // Return null if no match is found 
+
             } 
         }
 

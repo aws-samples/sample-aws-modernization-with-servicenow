@@ -18,4 +18,7 @@ In this section, you'll run your **custom skill** on a single KB article using t
 
 3. Woohoo! Your KB article should be automatically categorized! 
 
-![KB deply skill](/images/servicenow/skill_action/kb_nav_knowledge_article.png)
+![KB deply skill](/images/servicenow/skill_action/kb_knowledge_article_updated.png)
+
+4. Navigate to the article KB0010005 and verify the **Category**, it should have been changed to "Mac OS X"
+![KB deply skill](/images/servicenow/skill_action/kb_knowledge_article_updated_value.png)
