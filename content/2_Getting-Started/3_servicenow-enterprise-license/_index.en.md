@@ -13,9 +13,9 @@ To complete this workshop, you’ll need a **ServiceNow Enterprise License**. Th
 
 ### 🏢 If You're Attending a Hosted Event
 
-For AWS- or ServiceNow-hosted events (e.g., **AWS re:Invent**, **KubeCon**, **Immersion Day**), a temporary Enterprise License will be provided by the event organizers.
+For AWS- or ServiceNow-hosted events (e.g., **AWS re:Invent**, **Immersion Day**), a temporary Enterprise License will be provided by the event organizers.
 
-> This license will be delivered as a **JSON file**.
+> This license will be delivered as **Credentials** and **ServiceNow instance URL**.
 
 ---
 
@@ -32,13 +32,8 @@ If you're not participating in a hosted event, you’ll need to request access t
 
 ## Applying Your License
 
-Once you receive the license JSON file:
+Once you receive the license credential :
 
-1. Open your **VSCode Server terminal**.
-2. Create a file named `license.json` in your working directory.
-3. Paste the license contents into the file and save it.
-
-```bash
-nano license.json
-
-# Paste the JSON content, then press Ctrl+O to save, Enter to confirm, and Ctrl+X to exit.
+1. Navigate to the provided **ServiceNow instance URL**.
+2. Enter the provided **Username** and **Password* provided as **Credentials**  
+3. Click **Log in** button to access the **ServiceNow instance**.

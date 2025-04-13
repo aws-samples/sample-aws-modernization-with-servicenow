@@ -36,9 +36,11 @@ Before we interact with Amazon Bedrock through the ServiceNow application, we ne
 2. Click the **Manage model access** button.
 3. Select the following models (these are required for this workshop):
    - **Anthropic Claude 3**
+   - **Anthropic Claude 3 Sonnet**
    - **Amazon Titan Text G1**
    - **AI21 Labs Jurassic-2**
    - **Mistral 7B**
+   - **Amazon Nova**
 
 4. Click **Next**, then **Submit** to confirm model access.
 5. Wait for the access to be granted — this may take a few minutes.
@@ -49,6 +51,25 @@ Before we interact with Amazon Bedrock through the ServiceNow application, we ne
 
 After a few minutes, return to the **Model access** page and ensure the status for each selected model says **Access granted**.
 
+## Step 5: Setup Cloudwatch Access for Model invocations
+
+1. Make sure to create a log group by navigating to **Amazon CloudWatch -> Log Groups -> Create Log Group**
+![cloudwatch-settings](/images/create-cw-settings.png)  
+
+2. In the left navigation menu of **Amazon Bedrock**, click **Settings**
+
+![model-settings](/images/model-settings.png)
+
+3. Toggle to enable the **Model invocation logging** button.
+4. Select the following values as shown below:
+   - Enable the radio button **Cloudwatch Logs only**
+   - Enter value for **Log group name** (in our case we use **bedrock-models**)
+   - Enable the radio button **Create and use a new role** 
+   - Enter **bedrock-cw-logging-role** as value for **Service role name**
+
+![model-settings](/images/model-cw-settings.png)  
+
+5. Click **Save settings** to enable cloudwatch logging for model invocations.
 ---
 
 ## ✅ You're Ready!
