@@ -1,6 +1,7 @@
 ---
 title: Enable Amazon Bedrock in the Console
 description: Enable access to Amazon Bedrock foundation models using the AWS Management Console.
+chapter: true
 weight: 3
 ---
 

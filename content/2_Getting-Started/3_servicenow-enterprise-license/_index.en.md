@@ -1,5 +1,6 @@
 ---
 title: "ServiceNow Enterprise License"
+chapter: true
 weight: 4
 ---
 

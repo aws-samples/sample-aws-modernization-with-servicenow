@@ -1,7 +1,7 @@
 ---
 title: "Module 2 - Knowledge Article Categorization"
 chapter: true
-weight: 30
+weight: 40
 ---
 
 # Module 2: Knowledge Article Categorization 📚
