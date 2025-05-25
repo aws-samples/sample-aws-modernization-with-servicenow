@@ -4,7 +4,7 @@ chapter: true
 weight: 33
 ---
 
-# 🧠 Select a Model for Amazon Bedrock
+# Select a Model for Amazon Bedrock
 
 In this section, you’ll configure which **LLM model** to use with Amazon Bedrock for your custom skills.
 
@@ -13,7 +13,7 @@ By default, the integration uses Amazon’s **Titan model**, but you can configu
 
 ---
 
-## ⚙️ Create a New Model Configuration
+## Create a New Model Configuration
 
 Follow the steps below to register a new model:
 
@@ -88,7 +88,7 @@ anthropic.claude-3-sonnet-20240229-v1:0
 
 ---
 
-## 🧩 Pro Tips
+## Pro Tips
 
 - You can test and compare multiple models by creating additional entries in the **Model Config** table.
 - Don’t forget to monitor token usage, especially with larger models.

@@ -4,7 +4,7 @@ chapter: true
 weight: 41
 ---
 
-# 🔍 Review Knowledge Articles
+# Review Knowledge Articles
 
 ## Review knowledge base and gather categories for use in NASK 
 First, we need to identify, review, and collect information about 1) the knowledge base and 2) the categories contained in this knowledge base for NASK use. The purpose is to capture a finite list of categories that the Bedrock's Claude LLM can choose from given the text of a KCS knowledge base article. 

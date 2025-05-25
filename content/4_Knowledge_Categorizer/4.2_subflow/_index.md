@@ -4,7 +4,7 @@ chapter: true
 weight: 42
 ---
 
-# 🛠️ Build Subflow 
+# Build Subflow 
 
 ## Build a Subflow to collect relevant Knowledge Base categories 
 
