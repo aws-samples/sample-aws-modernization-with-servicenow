@@ -4,32 +4,19 @@ chapter: true
 weight: 1
 ---
 
-# Introduction
+# Overview
+As the demand for AI-driven automation continues to grow, organizations are turning to generative AI (GenAI) to improve enterprise workflows, decision-making, and customer service.
 
-## Learning Objectives <!-- MODIFY THIS SUBHEADING -->
+## Generative AI at ServiceNow
+The ServiceNow Platform and ecosystem is uniquely suited to generative AI. We have access to the hardware, the software, the data, and the people via our Element AI acquisition that is required to incorporate domain specific LLMs straight into the platform.
 
-This paragraph block should highlight the learning objectives of the workshop. A bulleted list works well for this purpose.
+   ![Create New Connection](/images/servicenow/now-gen-ai-at-servicenow.png)
 
-## Workshop Structure <!-- MODIFY THIS SUBHEADING -->
-This paragraph block should be utilized to briefly explain the submodules that are going to be presented as well as the approximate total time for the workshop and individual submodules. <br>
+That means that we’ve abstracted the complexity of dealing with AI models and are able to deliver the latest technology in an easy to consume model, around the workflows you and your customers have already invested in to drive action across the enterprise. Because this is a single platform, all of our platform tools and workflows are going to be able to benefit from GenAI in various capacities.
 
-For example:
-<ul>
-    <li> Prerequisites *(15 minutes)* </li>
-    <li> Setting up an account for the solution *(15 minutes)* </li>
-    <li> Module 1: Module 1 Title *(30 minutes)* </li>
-    <li> Module 2: Module 2 Title *(30 minutes)* </li>
-    <li> Module 3: Module 3 Title *(30 minutes)* </li>
-</ul>
+Most of what you’ve probably seen relating to now assist covers our OOTB built use cases such as flow and code generation, incident summarization etc. But what if you want more? We are a platform after all, in everything we do, we simply servbe to inspire you to build and grow your own solutions on top of what we offer. Generative AI is no different.
 
-{{% notice info %}}
-<p style='text-align: left;'>
-**REMOVE:** With the exception of _index.md, the module folders and filenames should be changed to better reflect their content, i.e. 1_Planning as the folder and 11_HowToBegin as the first submodule. Changing the "weight" value of the header is ultimately what reflects the order the modules are presented.
-</p>
-{{% /notice %}}
-
-**REMOVE:** Every introduction page should include the following warning label.
-
+---------------------------------------------------------------------
 {{% notice warning %}}
 The examples and sample code provided in this workshop are intended to be consumed as instructional content. These will help you understand how various AWS services can be architected to build a solution while demonstrating best practices along the way. These examples are not intended for use in production environments.
 {{% /notice %}}
