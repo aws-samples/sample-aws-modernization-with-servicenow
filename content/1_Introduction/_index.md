@@ -5,12 +5,13 @@ weight: 1
 ---
 
 # Overview
+Generative AI is useful because it can automate tasks, create new content, and improve personalization, leading to efficiency gains, cost savings, and enhanced customer experiences. It can also be used to uncover hidden patterns in data and accelerate innovation across various industries, from healthcare to finance. 
 As the demand for AI-driven automation continues to grow, organizations are turning to generative AI (GenAI) to improve enterprise workflows, decision-making, and customer service.
 
 ## Generative AI at ServiceNow
 The ServiceNow Platform and ecosystem is uniquely suited to generative AI. We have access to the hardware, the software, the data, and the people via our Element AI acquisition that is required to incorporate domain specific LLMs straight into the platform.
 
-   ![Create New Connection](/images/servicenow/now-gen-ai-at-servicenow.png)
+   ![Gen AI at ServiceNow](/images/servicenow/now-gen-ai-at-servicenow.png)
 
 That means that we’ve abstracted the complexity of dealing with AI models and are able to deliver the latest technology in an easy to consume model, around the workflows you and your customers have already invested in to drive action across the enterprise. Because this is a single platform, all of our platform tools and workflows are going to be able to benefit from GenAI in various capacities.
 

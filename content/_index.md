@@ -29,7 +29,7 @@ This workshop is divided into sections listed below. Plan on 3 hours to complete
 
 ## Learning Objectives <!-- MODIFY THIS SUBHEADING -->
 - Learn how ServiceNow workflows can pass contextual data to Bedrock LLMs, which generate outputs—such as summaries, insights, and recommended actions—that are directly actionable within the ServiceNow platform.
-- Custom AI skills built with the Now Assist Skill Kit integrate natively into ServiceNow applications, such as Virtual Agent, IT Service Management, and Customer Service Management, delivering a unified and intuitive user experience.
+- Build Custom AI skills with Now Assist Skill Kit to integrate natively into ServiceNow applications, such as Virtual Agent, IT Service Management, and Customer Service Management, delivering a unified and intuitive user experience.
 - Using the Now Assist Skill Kit, developers can easily integrate Amazon Bedrock’s large language models (LLMs) into their workflows. 
 
 ---------------------------------------------------------------------

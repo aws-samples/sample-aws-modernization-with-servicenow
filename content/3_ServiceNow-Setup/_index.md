@@ -21,15 +21,15 @@ NASK helps you define input data, process it using AI tools, and deploy the resu
 
 We’ll follow these 9 steps:
 
-1. **Phase 1** – Review the knowledge base and gather categories for the Now LLM to use when classifying KCS KB article text.
-2. **Phase 2** – Identify and review a specific KCS KB article to use as a test record.
+1. **Phase 1** – Review the knowledge base and gather categories for the Now LLM to use when classifying Knowledge KB article text.
+2. **Phase 2** – Identify and review a specific Knowledge KB article to use as a test record.
 3. **Phase 3** – Build a Subflow to gather category data automatically.
 4. **Phase 4** – Create the custom skill using NASK.
 5. **Phase 5** – Test the custom skill.
 6. **Phase 6** – Deploy the custom skill.
 7. **Phase 7** – Activate the custom skill.
-8. **Phase 8** – Run the skill on a single KCS KB article.
-9. **Phase 9** – Run the skill on a list of KCS KB articles.
+8. **Phase 8** – Run the skill on a single Knowledge KB article.
+9. **Phase 9** – Run the skill on a list of Knowledge KB articles.
 
 ---
 

@@ -23,3 +23,7 @@ Once you have the data then you send that off to the LLM (in this case Amazon Be
 Here you can see the guidance to work with NOW Assist Skill kit, which we are going to walk-thru in this workshop in following sections.
 
 ![NOW Assist skill kit diagram](/images/servicenow/now-assist-skill-kit-intro.png)
+
+---------------------------------------------------------------------
+
+## Now, we'll finally go to our first Lab and put some of the knowledge we've seen here into practice
