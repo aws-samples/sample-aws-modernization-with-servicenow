@@ -1,10 +1,10 @@
 ---
-title: "Select a model for Amazon Bedrock"
+title: "Select a LLM model"
 chapter: true
 weight: 33
 ---
 
-# Select a Model for Amazon Bedrock
+# Configure LLM Model from Amazon Bedrock
 
 In this section, you’ll configure which **LLM model** to use with Amazon Bedrock for your custom skills.
 

@@ -1,10 +1,10 @@
 ---
-title: "Configure Generative AI Controller for Bedrock LLMs"
+title: "Configure Generative AI Controller"
 chapter: true
 weight: 30
 ---
 
-# Configure Generative AI Controller for Bedrock LLMs
+# Configure Generative AI Controller for Amazon Bedrock LLMs
 
 In this section we are going to get started with Generative AI Controller to integrate directly with Amazon Bedrock. With Workflow Studio and Virtual Agent Designer, you can create your own use cases for AI-generated text and sentiment analysis, including advanced workflows and custom scripts.
 

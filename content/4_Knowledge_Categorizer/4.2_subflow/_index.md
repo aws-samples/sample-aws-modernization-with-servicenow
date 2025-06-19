@@ -4,8 +4,6 @@ chapter: true
 weight: 42
 ---
 
-# Build Subflow 
-
 ## Build a Subflow to collect relevant Knowledge Base categories 
 
 In this section, you’ll build a **Subflow** that gathers knowledge categories used to classify KB articles.

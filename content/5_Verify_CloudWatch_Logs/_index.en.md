@@ -1,10 +1,10 @@
 ---
-title: "Verify CloudWatch Logs"
+title: "Module 3 - Verify results in AWS"
 chapter: true
 weight: 50
 ---
 
-# Verify CloudWatch Logs 
+## Verify CloudWatch Logs 
 In this section, you'll verify that the action taken upon execution of **Custom skill in Action** in previous module actually  invocked the **Amazon Bedrock API** calling **Anthropic Claude Sonnet 3**.
 
 ---

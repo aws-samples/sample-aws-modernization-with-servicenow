@@ -1,5 +1,5 @@
 ---
-title: "Testing the Custom Skills"
+title: "Test the Custom Skills"
 chapter: true
 weight: 45
 ---

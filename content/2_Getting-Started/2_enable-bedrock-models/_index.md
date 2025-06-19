@@ -77,5 +77,3 @@ After a few minutes, return to the **Model access** page and ensure the status f
 
 You’ve now enabled the Bedrock models required for the rest of the workshop.
 
-➡️ Continue to [Setting Up the ServiceNow Application](../4_ServiceNow-Setup/) 
-

@@ -1,10 +1,10 @@
 ---
-title: "Configure API Credentials for Amazon Bedrock"
+title: "Setup API Credentials"
 chapter: true
 weight: 32
 ---
 
-# Configure API Credentials for Amazon Bedrock
+# Configure API Credentials for Amazon Bedrock in ServiceNow
 
 In this section, you will configure your API credentials (created in the **Getting Started** section) to enable the use of **Amazon Bedrock** in custom workflows and Virtual Agent Designer topics.
 

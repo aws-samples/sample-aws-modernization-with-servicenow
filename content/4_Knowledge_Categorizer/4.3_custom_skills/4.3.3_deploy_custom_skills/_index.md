@@ -5,7 +5,7 @@ weight: 46
 ---
 
 
-## Deploy the custom skill
+## Deploying the Custom Skill
 
 In this section, you'll deploy the **custom skill** within the **NOW Assist Skill Kit (NASK)** application that we created in the previous module.
 

@@ -5,7 +5,7 @@ weight: 47
 ---
 
 
-## Activate the custom skill
+## Activating the custom skill
 
 In this section, you'll activate the **custom skill** within the **NOW Assist Skill Kit (NASK)** application that we deployed and published in the previous module.
 

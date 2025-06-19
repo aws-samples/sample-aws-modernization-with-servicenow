@@ -4,8 +4,6 @@ chapter: true
 weight: 43
 ---
 
-# Custom Skills using NASK 
-
 In this section, you'll create **custom skills** using the **NOW Assist Skill Kit (NASK)** that connect to **Amazon Bedrock**, enabling your workflows and Virtual Agent Designer topics to generate intelligent responses using LLMs.
 
 ---

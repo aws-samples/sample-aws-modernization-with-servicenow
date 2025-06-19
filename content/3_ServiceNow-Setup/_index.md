@@ -1,10 +1,10 @@
 ---
-title: Module 1 - Setting Up the ServiceNow Now Assist
+title: Module 1 - Setting Up ServiceNow
 description: Configure the ServiceNow app to integrate with Amazon Bedrock and begin the modernization workflow.
 weight: 30
 ---
 
-# Set Up the ServiceNow Now Assist App
+# Setup the ServiceNow Now Assist platform with Amazon Bedrock
 
 Now that you’ve enabled the required Amazon Bedrock models, it’s time to configure the ServiceNow application that interacts with Bedrock.
 

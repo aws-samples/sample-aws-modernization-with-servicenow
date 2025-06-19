@@ -1,5 +1,5 @@
 ---
-title: "ServiceNow Enterprise License"
+title: "ServiceNow Setup"
 chapter: true
 weight: 4
 ---
@@ -14,7 +14,7 @@ To complete this workshop, you’ll need a **ServiceNow Enterprise License**. Th
 
 ### 🏢 If You're Attending a Hosted Event
 
-For AWS- or ServiceNow-hosted events (e.g., **AWS re:Invent**, **Immersion Day**), a temporary Enterprise License will be provided by the event organizers.
+For AWS- or ServiceNow-hosted events (e.g., **AWS reInvent**, **Immersion Day**), a temporary Enterprise License will be provided by the event organizers.
 
 > This license will be delivered as **Credentials** and **ServiceNow instance URL**.
 

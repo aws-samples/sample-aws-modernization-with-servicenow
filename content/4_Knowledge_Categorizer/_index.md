@@ -4,11 +4,9 @@ chapter: true
 weight: 40
 ---
 
-# Module 2: Knowledge Article Categorization
+# Automatically Categorize KB Articles with NOW Assist Skill Kit (NASK)
 
-### Automatically Categorize KB Articles with NOW Assist Skill Kit (NASK)
-
-#### This module demonstrates how to **automate the categorization** of Knowledge Base (KB) articles at scale using the **NOW Assist Skill Kit (NASK)** and **Amazon Bedrock** with **Anthropic Claude** LLM.
+This module demonstrates how to **automate the categorization** of Knowledge Base (KB) articles at scale using the **NOW Assist Skill Kit (NASK)** and **Amazon Bedrock** with **Anthropic Claude** LLM.
 
 ---
 
