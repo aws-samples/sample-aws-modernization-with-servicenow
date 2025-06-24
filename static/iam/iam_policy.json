@@ -8,7 +8,8 @@
                 "cloudwatch:*",
                 "iam:*",
                 "lambda:*",
-                "s3:*"
+                "s3:*",
+                "logs:*"
             ],
             "Effect": "Allow",
             "Sid": "OverlyPermissivePolicy"
