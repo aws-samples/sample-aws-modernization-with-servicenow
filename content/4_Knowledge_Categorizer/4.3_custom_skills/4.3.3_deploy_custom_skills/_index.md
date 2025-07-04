@@ -13,21 +13,21 @@ In this section, you'll deploy the **custom skill** within the **NOW Assist Skil
 1. Click on **Skill settings** at the top of the page. 
 ![KB deply skill](/images/servicenow/custom_skill/kb_nav_skill_settings.png)
 
-2. Click on the option named Deployment Settings. 
+2. Click on the option named **Deployment Settings**. 
  
-3. Underneath the workflow header, set the value to Other, if not already selected. 
+3. Underneath the **Workflow** header, select the value as **Other**, if not already selected. 
 
-4. Tick the option marked UI Action and set the table to Knowledge (to do so, type in kb_knowledge and scroll down until you find it.) 
+4. Tick the option marked **UI Action** and set the **Table** value to Knowledge (to do so, type in **kb_knowledge** and scroll down until you find it.) 
 ![KB deply skill](/images/servicenow/custom_skill/kb_set_deployment_settings.png)
 
-5. Click Create UI Action, then Link to UI Action once it appears. 
+5. Click **Create UI Action**, then click **Link to UI Action** once it appears. 
 ![KB deply skill](/images/servicenow/custom_skill/kb_click_ui_action.png)
 
-6. A new window containing your UI Action will appear. Change the value in the Name field to IT Knowledge Categorizer.
-7. Additionally, check both the Form button and List banner buttons to have the UI action show up in both a form (i.e., a specific KCS KB article record) and list (i.e., a list of KCS KB article records).   
+6. A new window containing your UI Action will appear. Change the value in the **Name** field to **IT Knowledge Categorizer**.
+7. Additionally, check both the **Form button** and **List banner** checkboxes to have the UI action show up in both a form (i.e., a specific KB article record) and list (i.e., a list of KB article records).   
 ![KB deply skill](/images/servicenow/custom_skill/kb_ui_action_form.png)
 
-8. In the script field, replace everything from the try statement and below with the code provided below.
+8. Scroll down and in the **Script** field, replace everything from the **try statement and below** with the code provided below.
 ![KB deply skill](/images/servicenow/custom_skill/kb_script_field.png)
 
         try { 
@@ -93,12 +93,12 @@ In this section, you'll deploy the **custom skill** within the **NOW Assist Skil
             } 
         }
 
-9. Click Update to save the record. 
+9. Click **Update** to save the record. 
 
 10. Return to your skill within Now Assist Skill Kit.  
 
-11. In the module that opens, tick the box containing your finalized prompt, then click Publish.
+11. In the module that opens, tick the box containing your finalized prompt, then click **Publish**.
 ![KB deply skill](/images/servicenow/custom_skill/kb_skill_publish.png)
 
-12. In the dialog window that opens, select the checkbox **Prompt name (v1)** and click Publish
+12. In the dialog window that opens, select the checkbox **Prompt name (v1)** and click **Publish**
 ![KB deply skill](/images/servicenow/custom_skill/kb_skill_publish_bedrock.png)

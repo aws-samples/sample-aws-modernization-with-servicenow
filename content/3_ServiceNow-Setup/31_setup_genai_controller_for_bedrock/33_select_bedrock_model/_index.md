@@ -30,31 +30,11 @@ sys_generative_ai_model_config.list
 ![New Model Configuration](/images/servicenow/now_model_configuration.png)
 
 3. Enter the following values:
-
-#### Model:
-
-```bash
-anthropic.claude-3-sonnet-20240229-v1:0
-```
-
-  _(This is the ID for Claude 3 Sonnet by Anthropic. You can find model IDs under **Amazon Bedrock > Base Models**.)_
-
-#### Provider:
-
-```bash
-Amazon Bedrock
-```
-
-#### Connection and Credential Alias:
-
-Select the alias created in the previous step.
-(Example: `sn_amz_bedrock_spk.Amazon_Bedrock`)
-
-#### Max Tokens:
-
-```bash
-32768
-```
+- Select the checkbox for **Active**
+- Set **Model** value to **anthropic.claude-3-sonnet-20240229-v1:0** _(This is the ID for Claude 3 Sonnet by Anthropic. You can find model IDs under **Amazon Bedrock > Base Models**.)_
+- Set **Provider** value by selecting **Amazon Bedrock**
+- Set **Max Tokens** value to **32768**
+- Set **Connection and Credential Alias** value by selecting **sn_amz_bedrock_spk.Amazon_Bedrock** created in previous step.
 
 4. Click **Submit** to save the record.
 
@@ -76,7 +56,7 @@ sys_generative_ai_config.list
 
 2. Locate and open the record for your custom skill that uses **Amazon Bedrock** as the provider.
 
-3. Confirm the **Definition** field is set to the appropriate **OneExtend Capability Definition** (e.g., the name of your skill).
+3. Confirm the **Definition** field is set to the appropriate **OneExtend Capability Definition**.
 
 4. In the **Model** field, select or enter the same model ID used earlier:
 

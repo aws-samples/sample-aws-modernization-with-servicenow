@@ -29,8 +29,8 @@ To use Amazon Bedrock as your LLM provider for Generative AI Controller capabili
 
 4. Fill in the required fields:
    - **Region** (e.g., `us-east-1`)
-   - **AWS AccessKeyId**
-   - **AWS SecretAccessKey**
+   - **AWS AccessKeyId** (value copied from Prerequisites section)
+   - **AWS SecretAccessKey** (value copied from Prerequisites section)
 
    Then click **Create**.
 

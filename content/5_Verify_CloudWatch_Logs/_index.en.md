@@ -8,7 +8,7 @@ weight: 50
 In this section, you'll verify that the action taken upon execution of **Custom skill in Action** in previous module actually  invocked the **Amazon Bedrock API** calling **Anthropic Claude Sonnet 3**.
 
 ---
-1. [Click here](https://console.aws.amazon.com/cloudwatch/home) or within the **Search bar** at the top of the AWS Console, type **"Cloudwatch"** and click on **CloudWatch** from the dropdown.
+1. [Click here](https://console.aws.amazon.com/cloudwatch/home) or within the **Search bar** at the top of the **AWS Console**, and type **"Cloudwatch"** and click on **CloudWatch** from the dropdown.
 
 2. In the left navigation menu, click **Log groups**.
 ![log-groups](/images/cw-log-groups.png)
