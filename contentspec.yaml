@@ -48,11 +48,11 @@ awsAccountConfig:
     maxAccessibleRegions: 1
     accessibleRegions:
       recommended:
-        - us-west-2
+        - us-east-1
   
     deployableRegions:
       recommended:
-        - us-west-2
+        - us-east-1
 
   # If set to `true`, an EC2 KeyPair called `ws-default-keypair` will be created in the AWS Account and the private key material
   # will be made available to the Participant via the Participant APIs and Participant interface.
